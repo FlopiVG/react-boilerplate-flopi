@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: path.resolve(__dirname, 'src/main.js'),
+    entry: path.resolve(__dirname, 'src/main.jsx'),
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
@@ -15,6 +15,12 @@ module.exports = {
                 query: {
                     presets: ['es2015', 'react']
                 }
+            },
+            {
+                test: /\.jsx?$/,
+                include: path.resolve(__dirname, 'src'),
+                loader: 'eslint-loader',
+                enforce: "pre"
             }
         ]
     },
