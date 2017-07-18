@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class ListItems extends Component {
+  static propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    getData: PropTypes.func.isRequired,
+  }
   componentDidMount() {
     this.props.getData();
   }
@@ -14,10 +18,5 @@ class ListItems extends Component {
     );
   }
 }
-
-ListItems.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  getData: PropTypes.func.isRequired,
-};
 
 export default ListItems;
