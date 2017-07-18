@@ -1,5 +1,6 @@
-import React from 'react';
-import ListItems from 'components/ListItems';
+export const ACTION_TYPES = {
+  GET_DATA: 'get_data',
+};
 
 const Data = [
   {
@@ -20,8 +21,7 @@ const Data = [
   },
 ];
 
-const Comp = () => (
-  <ListItems data={Data} />
-);
-
-export default Comp;
+export const getData = () => ({
+  type: ACTION_TYPES.GET_DATA,
+  payload: Data,
+});
