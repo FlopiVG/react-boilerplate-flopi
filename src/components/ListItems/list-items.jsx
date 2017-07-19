@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Ul from './ul';
+
 class ListItems extends Component {
   static propTypes = {
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -17,7 +19,9 @@ class ListItems extends Component {
       <div>
         {loading && 'Loading...'}
         {error}
-        {!loading && !error && data.map(item => <li key={item.id}>{item.text}</li>)}
+        {!loading && !error && <Ul>
+          {data.map(item => <li key={item.id}>{item.text}</li>)}
+        </Ul>}
       </div>
     );
   }
