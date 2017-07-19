@@ -8,7 +8,10 @@ class ListItems extends Component {
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
     error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]).isRequired,
     loading: PropTypes.bool.isRequired,
-    getData: PropTypes.func.isRequired,
+    getData: PropTypes.func,
+  }
+  static defaultProps = {
+    getData: () => null,
   }
   componentDidMount() {
     this.props.getData();

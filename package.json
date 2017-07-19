@@ -5,7 +5,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack",
-    "server": "nodemon ./server"
+    "server": "nodemon ./server",
+    "test": "karma start ./test/karma.conf.js"
   },
   "author": "Flopi",
   "license": "ISC",
@@ -23,6 +24,13 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-cli": "^1.0.1",
+    "karma-mocha": "^1.3.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.4",
+    "mocha": "^3.4.2",
     "nodemon": "^1.11.0",
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.5.1"
@@ -31,6 +39,7 @@
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
     "cors": "^2.8.4",
+    "expect": "^1.20.2",
     "express": "^4.15.3",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
