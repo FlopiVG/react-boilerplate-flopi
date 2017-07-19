@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Ul from './ul';
+import Wrapper from './wrapper';
 
 class ListItems extends Component {
   static propTypes = {
@@ -19,13 +19,13 @@ class ListItems extends Component {
   render() {
     const { data, error, loading } = this.props;
     return (
-      <div>
-        {loading && 'Loading...'}
-        {error}
-        {!loading && !error && <Ul>
+      <Wrapper>
+        {loading && <div className="loading">Loading<span>.</span><span>.</span><span>.</span></div>}
+        {error && <div className="error">{error}</div>}
+        {!loading && !error && <ul>
           {data.map(item => <li key={item.id}>{item.text}</li>)}
-        </Ul>}
-      </div>
+        </ul>}
+      </Wrapper>
     );
   }
 }
