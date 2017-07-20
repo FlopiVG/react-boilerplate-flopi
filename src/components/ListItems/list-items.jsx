@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Wrapper from './wrapper';
 
@@ -23,7 +24,7 @@ class ListItems extends Component {
         {loading && <div className="loading">Loading<span>.</span><span>.</span><span>.</span></div>}
         {error && <div className="error">{error}</div>}
         {!loading && !error && <ul>
-          {data.map(item => <li key={item.id}>{item.text}</li>)}
+          {data.map(item => <Link to={`/item/${item.id}`} key={item.id}><li>{item.text}</li></Link>)}
         </ul>}
       </Wrapper>
     );

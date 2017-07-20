@@ -2,6 +2,7 @@ import { ACTION_TYPES } from 'actions/example';
 
 const INITIAL_STATE = {
   data: [],
+  activeItem: false,
   loading: false,
   error: false,
 };
@@ -11,9 +12,11 @@ export default function (state = INITIAL_STATE, action) {
     case ACTION_TYPES.FETCH_DATA:
       return { ...state, loading: true };
     case ACTION_TYPES.FETCH_DATA_SUCCESFULL:
-      return { data: action.payload, loading: false, error: false };
+      return { ...state, data: action.payload, loading: false };
     case ACTION_TYPES.FETCH_DATA_ERROR:
-      return { data: [], loading: false, error: action.payload };
+      return { ...state, loading: false, error: action.payload };
+    case ACTION_TYPES.ACTIVE_ITEM:
+      return { ...state, activeItem: action.payload };
     default:
       return state;
   }
