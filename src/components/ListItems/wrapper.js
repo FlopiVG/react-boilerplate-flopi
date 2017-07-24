@@ -1,34 +1,27 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
+  display: grid;
   margin: 5px;
   width: 12%;
   text-align: center;
   padding: 0;
   color: #CCC;
-  ul {
-    padding: 0;
-    list-style-type: none;
-    a:nth-child(even) {
-      li {
-        background-color: #555;
-      }
-    }
-    a {
-      color: #CCC;
-      text-decoration: none;
-      li {
-        background-color: #333;
-        cursor: pointer;
-        padding: 5px 0;
-      }
-      li:hover {
-        filter: brightness(110%);
-      }
-      li:active {
-        filter: initial;
-      }
-    }
+  a {
+    background-color: #333;
+    color: #CCC;
+    cursor: pointer;
+    padding: 5px 0;
+    outline: 0;
+  }
+  a:nth-child(even) {
+    background-color: #555;
+  }
+  a:hover {
+    filter: brightness(110%);
+  }
+  a:active {
+    filter: initial;
   }
   .error {
     background: #c00;

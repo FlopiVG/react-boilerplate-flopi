@@ -21,12 +21,13 @@ export const getData = () => (dispatch) => {
   });
 };
 
-export const getItem = (id, cb) => (dispatch, getState) => {
-  const { example: { data } } = getState();
-  const activeItem = data.filter(item => item.id === +id)[0];
-  if (activeItem) {
-    dispatch({ type: ACTION_TYPES.ACTIVE_ITEM, payload: activeItem });
-  } else {
-    cb();
+export const getItem = id => (dispatch, getState) => {
+  const { example: { data, activeItem } } = getState();
+  const itemToActive = data.filter(item => item.id === +id)[0];
+
+  if (activeItem.id === itemToActive.id) {
+    dispatch({ type: ACTION_TYPES.ACTIVE_ITEM, payload: false });
+  } else if (itemToActive) {
+    dispatch({ type: ACTION_TYPES.ACTIVE_ITEM, payload: itemToActive });
   }
 };

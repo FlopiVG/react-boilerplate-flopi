@@ -1,16 +1,20 @@
 import { connect } from 'react-redux';
 
-import { getData } from 'actions/example';
+import { getData, getItem } from 'actions/example';
 import App from 'components/App';
 
-const mapStateToProps = ({ example: { data, loading, error } }) => (
+const mapStateToProps = ({ example: { data, loading, error, activeItem } }) => (
   {
     list: { data, loading, error },
+    item: activeItem,
   }
 );
 
 const mapDispatchToProps = dispatch => (
-  { getData: dispatch(getData()) }
+  {
+    getData: () => dispatch(getData()),
+    getItem: id => dispatch(getItem(id)),
+  }
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
