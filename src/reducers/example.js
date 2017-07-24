@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   activeItem: false,
   loading: false,
   error: false,
+  createMode: false,
 };
 
 export default function (state = INITIAL_STATE, action) {
@@ -17,6 +18,8 @@ export default function (state = INITIAL_STATE, action) {
       return { ...state, loading: false, error: action.payload };
     case ACTION_TYPES.ACTIVE_ITEM:
       return { ...state, activeItem: action.payload };
+    case ACTION_TYPES.CREATE_MODE:
+      return { ...state, createMode: action.payload };
     default:
       return state;
   }

@@ -5,6 +5,7 @@ export const ACTION_TYPES = {
   FETCH_DATA_SUCCESFULL: 'fetch_data_succesfull',
   FETCH_DATA_ERROR: 'fetch_data_error',
   ACTIVE_ITEM: 'active_item',
+  CREATE_MODE: 'create_mode',
 };
 
 const PORT = process.env.PORT || 3000;
@@ -30,4 +31,8 @@ export const getItem = id => (dispatch, getState) => {
   } else if (itemToActive) {
     dispatch({ type: ACTION_TYPES.ACTIVE_ITEM, payload: itemToActive });
   }
+};
+
+export const activeCreateMode = active => (dispatch) => {
+  dispatch({ type: ACTION_TYPES.CREATE_MODE, payload: active });
 };

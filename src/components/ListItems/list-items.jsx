@@ -4,6 +4,15 @@ import PropTypes from 'prop-types';
 import Wrapper from './wrapper';
 
 class ListItems extends Component {
+  static propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]).isRequired,
+    loading: PropTypes.bool.isRequired,
+    getItem: PropTypes.func,
+  }
+  static defaultProps = {
+    getItem: () => null,
+  }
   activeItem = (id) => {
     this.props.getItem(id);
   }
@@ -19,15 +28,5 @@ class ListItems extends Component {
     );
   }
 }
-
-ListItems.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]).isRequired,
-  loading: PropTypes.bool.isRequired,
-  getItem: PropTypes.func,
-};
-ListItems.defaultProps = {
-  getItem: () => null,
-};
 
 export default ListItems;

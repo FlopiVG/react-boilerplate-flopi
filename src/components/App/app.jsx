@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import ListItem from 'components/ListItems';
 import Item from 'components/Item';
+import CreateItem from 'components/CreateItem';
+import Wrapper from './wrapper';
 
 class App extends Component {
   static propTypes = {
@@ -19,20 +21,27 @@ class App extends Component {
       }),
       PropTypes.bool,
     ]).isRequired,
+    createMode: PropTypes.bool,
     getItem: PropTypes.func.isRequired,
+    activeCreateMode: PropTypes.func,
   }
   static defaultProps = {
     getData: () => null,
+    activeCreateMode: () => null,
+    createMode: false,
   }
   componentDidMount() {
     this.props.getData();
   }
   render() {
-    const { list, item, getItem } = this.props;
+    const { list, item, getItem, createMode, activeCreateMode } = this.props;
     return (
       <div>
-        <ListItem {...list} getItem={getItem} />
-        {item && <Item {...item} />}
+        <Wrapper>
+          <ListItem {...list} getItem={getItem} />
+          {item && <Item {...item} />}
+        </Wrapper>
+        <CreateItem createMode={createMode} activeCreateMode={activeCreateMode} />
       </div>
     );
   }

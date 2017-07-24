@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Wrapper from './wrapper';
+
 const Item = ({ id, text }) => (
-  <div>
+  <Wrapper className="item">
     <h1>Item #{id}</h1>
     <p>{text}</p>
-  </div>
+  </Wrapper>
 );
 
 Item.propTypes = {
