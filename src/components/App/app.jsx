@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import ListItem from 'components/ListItems';
 import Item from 'components/Item';
-import CreateItem from 'components/CreateItem';
+import CreateItem from 'containers/CreateExample';
 import Wrapper from './wrapper';
 
 class App extends Component {
@@ -21,9 +21,7 @@ class App extends Component {
       }),
       PropTypes.bool,
     ]).isRequired,
-    createMode: PropTypes.bool,
     getItem: PropTypes.func.isRequired,
-    activeCreateMode: PropTypes.func,
   }
   static defaultProps = {
     getData: () => null,
@@ -34,14 +32,14 @@ class App extends Component {
     this.props.getData();
   }
   render() {
-    const { list, item, getItem, createMode, activeCreateMode } = this.props;
+    const { list, item, getItem } = this.props;
     return (
       <div>
         <Wrapper>
           <ListItem {...list} getItem={getItem} />
           {item && <Item {...item} />}
         </Wrapper>
-        <CreateItem createMode={createMode} activeCreateMode={activeCreateMode} />
+        <CreateItem />
       </div>
     );
   }

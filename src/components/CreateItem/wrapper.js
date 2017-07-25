@@ -10,6 +10,13 @@ const Wrapper = styled.div`
     width: 120px;
     height: 40px;
     font-weight: bold;
+    outline: 0;
+  }
+  button:hover {
+    filter: brightness(110%);
+  }
+  button:active {
+    filter: initial;
   }
   input {
     margin: 5px;

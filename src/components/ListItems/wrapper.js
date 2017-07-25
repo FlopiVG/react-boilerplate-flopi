@@ -13,6 +13,7 @@ const Wrapper = styled.div`
     cursor: pointer;
     padding: 5px 0;
     outline: 0;
+    overflow: hidden;
   }
   a:nth-child(even) {
     background-color: #555;

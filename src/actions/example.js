@@ -6,6 +6,7 @@ export const ACTION_TYPES = {
   FETCH_DATA_ERROR: 'fetch_data_error',
   ACTIVE_ITEM: 'active_item',
   CREATE_MODE: 'create_mode',
+  CREATE_ITEM: 'create_item',
 };
 
 const PORT = process.env.PORT || 3000;
@@ -35,4 +36,19 @@ export const getItem = id => (dispatch, getState) => {
 
 export const activeCreateMode = active => (dispatch) => {
   dispatch({ type: ACTION_TYPES.CREATE_MODE, payload: active });
+};
+
+export const createItem = values => (dispatch, getState) => {
+  let id = 1;
+  const items = getState().example.data.sort((a, b) => a.id > b.id);
+  for (let i = 0; i < items.length; i += 1) {
+    const item = items[i];
+    if (item.id === id) {
+      id += 1;
+    } else {
+      break;
+    }
+  }
+  const payload = { ...values, id };
+  dispatch({ type: ACTION_TYPES.CREATE_ITEM, payload });
 };

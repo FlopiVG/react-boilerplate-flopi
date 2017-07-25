@@ -20,6 +20,8 @@ export default function (state = INITIAL_STATE, action) {
       return { ...state, activeItem: action.payload };
     case ACTION_TYPES.CREATE_MODE:
       return { ...state, createMode: action.payload };
+    case ACTION_TYPES.CREATE_ITEM:
+      return { ...state, createMode: false, data: [...state.data, action.payload] };
     default:
       return state;
   }
