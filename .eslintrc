@@ -16,5 +16,8 @@
     "env": {
         "browser": true,
         "jasmine": true
+    },
+    "rules": {
+        "linebreak-style": 0
     }
 }

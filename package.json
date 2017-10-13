@@ -5,7 +5,9 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack",
-    "server": "nodemon ./server",
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "dev:client": "webpack-dev-server",
+    "dev:server": "nodemon ./server",
     "test": "karma start ./test/karma.conf.js"
   },
   "author": "Flopi",
@@ -17,6 +19,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "concurrently": "^3.5.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.2",
     "eslint-import-resolver-webpack": "^0.8.3",
