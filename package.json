@@ -7,7 +7,7 @@
     "build": "webpack",
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "dev:client": "webpack-dev-server",
-    "dev:server": "exit 0",
+    "dev:server": "json-server db.json",
     "test": "jest"
   },
   "jest": {
