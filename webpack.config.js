@@ -25,8 +25,15 @@ module.exports = {
     ],
   },
   resolve: {
-    modules: ['node_modules', 'src'],
+    modules: ['node_modules'],
     extensions: ['.js', '.jsx'],
+    alias: {
+      actions: path.resolve(__dirname, 'src', 'actions'),
+      components: path.resolve(__dirname, 'src', 'components'),
+      containers: path.resolve(__dirname, 'src', 'containers'),
+      reducers: path.resolve(__dirname, 'src', 'reducers'),
+      store: path.resolve(__dirname, 'src', 'store'),
+    },
   },
   devtool: 'source-map',
   devServer: {
