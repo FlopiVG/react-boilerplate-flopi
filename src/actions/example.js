@@ -35,17 +35,14 @@ export const activeCreateMode = active => (dispatch) => {
   dispatch({ type: ACTION_TYPES.CREATE_MODE, payload: active });
 };
 
-export const createItem = values => (dispatch, getState) => {
-  let id = 1;
-  const items = getState().example.data.sort((a, b) => a.id > b.id);
-  for (let i = 0; i < items.length; i += 1) {
-    const item = items[i];
-    if (item.id === id) {
-      id += 1;
-    } else {
-      break;
-    }
-  }
-  const payload = { ...values, id };
-  dispatch({ type: ACTION_TYPES.CREATE_ITEM, payload });
+export const createItem = values => async (dispatch) => {
+  const request = await fetch(`http://localhost:${PORT}/example`,
+    { method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values) });
+  const data = await request.json();
+  dispatch({ type: ACTION_TYPES.CREATE_ITEM, payload: data });
 };
