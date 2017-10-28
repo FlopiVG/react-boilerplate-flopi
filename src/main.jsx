@@ -11,7 +11,6 @@ const Main = () => (
   <Provider store={store}>
     <div>
       Boilerplate App
-      <button className="btn btn-primary">Button</button>
       <AppExample />
     </div>
   </Provider>
