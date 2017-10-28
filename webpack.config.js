@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/main.jsx'),
@@ -8,6 +9,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /(\.min)?\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
       {
         test: /\.jsx?$/,
         include: path.resolve(__dirname, 'src'),
@@ -35,6 +40,14 @@ module.exports = {
       store: path.resolve(__dirname, 'src', 'store'),
     },
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      Popper: ['popper.js', 'default'],
+    }),
+  ],
   devtool: 'source-map',
   devServer: {
     historyApiFallback: true,
