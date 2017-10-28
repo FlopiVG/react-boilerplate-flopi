@@ -9,10 +9,7 @@ import AppExample from 'containers/AppExample';
 
 const Main = () => (
   <Provider store={store}>
-    <div>
-      Boilerplate App
-      <AppExample />
-    </div>
+    <AppExample />
   </Provider>
 );
 
