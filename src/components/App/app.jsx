@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import ListItem from 'components/ListItems';
 import Item from 'components/Item';
 import CreateItem from 'containers/CreateExample';
-import Wrapper from './wrapper';
 
 class App extends Component {
   static propTypes = {
@@ -35,10 +34,10 @@ class App extends Component {
     const { list, item, getItem } = this.props;
     return (
       <div>
-        <Wrapper>
+        <div>
           <ListItem {...list} getItem={getItem} />
           {item && <Item {...item} />}
-        </Wrapper>
+        </div>
         <CreateItem />
       </div>
     );

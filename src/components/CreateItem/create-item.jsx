@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 
-import Wrapper from './wrapper';
-
 class CreateItem extends Component {
   static propTypes = {
     activeCreateMode: PropTypes.func.isRequired,
@@ -28,7 +26,7 @@ class CreateItem extends Component {
   render() {
     const { createMode, handleSubmit } = this.props;
     return (
-      <Wrapper className="create-item">
+      <div className="create-item">
         {!createMode && <button onClick={() => this.activeCreateMode(true)}>Create New</button>}
         {createMode && <form onSubmit={handleSubmit(this.onSubmit)}>
           <div>
@@ -38,7 +36,7 @@ class CreateItem extends Component {
           <button type="submit">Create</button>
           <button type="reset" onClick={() => this.activeCreateMode(false)}>Cancel</button>
         </form>}
-      </Wrapper>
+      </div>
     );
   }
 }

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Wrapper from './wrapper';
-
 class ListItems extends Component {
   static propTypes = {
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -19,12 +17,12 @@ class ListItems extends Component {
   render() {
     const { data, error, loading } = this.props;
     return (
-      <Wrapper>
+      <div>
         {loading && <div className="loading">Loading<span>.</span><span>.</span><span>.</span></div>}
         {error && <div className="error">{error}</div>}
         {!loading && !error && data.map(item =>
           <a key={item.id} onClick={() => this.activeItem(item.id)} role="link" tabIndex={0}>{item.text}</a>)}
-      </Wrapper>
+      </div>
     );
   }
 }
