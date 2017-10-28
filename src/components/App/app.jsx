@@ -33,9 +33,9 @@ class App extends Component {
   render() {
     const { list, item, getItem } = this.props;
     return (
-      <div>
+      <div className="container">
         <div>
-          <ListItem {...list} getItem={getItem} />
+          <ListItem {...list} getItem={getItem} activeItemId={item.id} />
           {item && <Item {...item} />}
         </div>
         <CreateItem />
