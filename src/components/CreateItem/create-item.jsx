@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 
-import Wrapper from './wrapper';
-
 class CreateItem extends Component {
   static propTypes = {
     activeCreateMode: PropTypes.func.isRequired,
@@ -22,23 +20,20 @@ class CreateItem extends Component {
   activeCreateMode = (active) => {
     this.props.activeCreateMode(active);
   }
-  renderField = field => (
-    <input type="text" {...field.input} />
-  )
   render() {
     const { createMode, handleSubmit } = this.props;
     return (
-      <Wrapper className="create-item">
-        {!createMode && <button onClick={() => this.activeCreateMode(true)}>Create New</button>}
+      <div className="create-item mt-5">
+        {!createMode && <button className="btn btn-primary" onClick={() => this.activeCreateMode(true)}>Create New</button>}
         {createMode && <form onSubmit={handleSubmit(this.onSubmit)}>
-          <div>
+          <div className="form-group col-4">
             <label htmlFor="form-text">Text: </label>
-            <Field id="form-text" name="text" component={this.renderField} />
+            <Field className="form-control" id="form-text" name="text" component="input" />
           </div>
-          <button type="submit">Create</button>
-          <button type="reset" onClick={() => this.activeCreateMode(false)}>Cancel</button>
+          <button className="btn btn-primary" type="submit">Create</button>
+          <button className="btn btn-secondary" type="reset" onClick={() => this.activeCreateMode(false)}>Cancel</button>
         </form>}
-      </Wrapper>
+      </div>
     );
   }
 }
