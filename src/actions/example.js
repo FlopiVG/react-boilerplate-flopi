@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export const ACTION_TYPES = {
   FETCH_DATA: 'fetch_data',
   FETCH_DATA_SUCCESFULL: 'fetch_data_succesfull',
@@ -11,16 +9,15 @@ export const ACTION_TYPES = {
 
 const PORT = process.env.PORT || 3000;
 
-export const getData = () => (dispatch) => {
-  const request = axios(`http://localhost:${PORT}/example`);
-  dispatch({ type: ACTION_TYPES.FETCH_DATA });
-  request
-  .then((response) => {
-    dispatch({ type: ACTION_TYPES.FETCH_DATA_SUCCESFULL, payload: response.data });
-  })
-  .catch((error) => {
-    dispatch({ type: ACTION_TYPES.FETCH_DATA_ERROR, payload: error.message });
-  });
+export const getData = () => async (dispatch) => {
+  try {
+    dispatch({ type: ACTION_TYPES.FETCH_DATA });
+    const request = await fetch(`http://localhost:${PORT}/example`);
+    const data = await request.json();
+    dispatch({ type: ACTION_TYPES.FETCH_DATA_SUCCESFULL, payload: data });
+  } catch (e) {
+    dispatch({ type: ACTION_TYPES.FETCH_DATA_ERROR, payload: e.message });
+  }
 };
 
 export const getItem = id => (dispatch, getState) => {
