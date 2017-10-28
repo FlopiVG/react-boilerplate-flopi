@@ -45,10 +45,7 @@
     "webpack-dev-server": "^2.9.2"
   },
   "dependencies": {
-    "axios": "^0.16.2",
-    "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0-beta.2",
-    "cors": "^2.8.4",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.1",
     "express": "^4.16.2",
